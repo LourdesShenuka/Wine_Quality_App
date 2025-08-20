@@ -13,7 +13,7 @@ from sklearn.model_selection import train_test_split
 # -------------------
 @st.cache_data
 def load_data():
-    return pd.read_csv("data/WineQT.csv")
+    return pd.read_csv("WineQT.csv")
 
 @st.cache_resource
 def load_model():
@@ -141,4 +141,5 @@ elif page == "Predict":
             proba = model.predict_proba(row)[0,1]
             pred = int(proba >= 0.5)
         st.success(f"Prediction: **{'Good Wine 🍷✅' if pred==1 else 'Bad Wine 🍷❌'}**")
+
         st.write(f"Confidence: {proba:.2%}")
